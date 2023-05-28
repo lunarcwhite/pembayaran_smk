@@ -4,13 +4,13 @@
 @stop
 @section('content')
    <div class="section mt-2">
-    <div class="card text-white mb-3">
+    <div class="card mb-3">
         <div class="card-header bg-success">
             <h4>Riwayat Pembayaran</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped text-dark">
+                <table class="table table-striped">
                     <thead>
                         <th>#</th>
                         <th>No Kwitansi</th>

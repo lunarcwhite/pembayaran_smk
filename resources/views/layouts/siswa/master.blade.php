@@ -58,10 +58,16 @@
     <!-- App Capsule -->
     <div id="appCapsule">
 
-
         <div class="header-large-title">
             <h1 class="title">@yield('pageTitle')</h1>
             <h2 class="subtitle">@yield('subMenuTitle')</h2>
+        </div>
+        <div class="section full mt-1">
+            <div class="wide-block pt-2 pb-2">
+                <a href="#" class="button goTop">
+                    <ion-icon name="arrow-up-outline"></ion-icon>
+                </a>
+            </div>
         </div>
 
         {{-- //content placed here --}}

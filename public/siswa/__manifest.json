@@ -1,7 +1,7 @@
 {
     "name": "Mobilekit",
     "short_name": "Mobilekit",
-    "start_url": "dashboard.user.index",
+    "start_url": "url('/)",
     "display": "standalone",
     "scope" : "/",
     "background_color": "#000000",

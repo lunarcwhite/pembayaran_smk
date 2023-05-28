@@ -1,5 +1,5 @@
 <div class="appBottomMenu">
-    <a href="{{route('dashboard.')}}" class="item active">
+    <a href="{{route('dashboard.')}}" class="item">
         <div class="col">
             <ion-icon name="home-outline"></ion-icon>
             <strong>Dashboard</strong>

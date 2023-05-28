@@ -4,12 +4,12 @@
 @stop
 @section('content')
     <div class="section mt-2">
-        <div class="card text-white mb-3">
+        <div class="card mb-3">
             <div class="card-header bg-success">
                 <h4>Biodata Siswa</h4>
             </div>
             <div class="card-body">
-                <table class="table-sm text-dark">
+                <table class="table-sm">
                     <tbody>
                         <tr>
                             <td>Nama</td>
@@ -35,12 +35,12 @@
                 </table>
             </div>
         </div>
-        <div class="card text-white mb-3">
+        <div class="card mb-3">
             <div class="card-header bg-success">
                 <h4>Rincian Pembayaran</h4>
             </div>
             <div class="card-body">
-                <table class="table-sm text-dark">
+                <table class="table-sm">
                     <tbody>
                         @foreach ($detail_biayas as $item)
                             <tr>
@@ -53,13 +53,13 @@
                 </table>
             </div>
         </div>
-        <div class="card text-white mb-3">
+        <div class="card mb-3">
             <div class="card-header bg-success">
                 <h4>Detail Pembayaran</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table-sm text-dark table-bordered table-striped">
+                    <table class="table-sm table-bordered table-striped">
                         <thead>
                             <th>Biaya</th>
                             <th>Total Biaya</th>
@@ -84,7 +84,7 @@
                     </table>
                 </div>
                 <hr/>
-                <table class="table text-dark table-bordered">
+                <table class="table table-bordered">
                     <tbody>
                         <tr>
                             <td>Total Pembayaran</td>

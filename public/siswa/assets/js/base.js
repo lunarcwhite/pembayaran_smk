@@ -1,3 +1,6 @@
+$(function () {
+    $('.appBottomMenu a[href~="' + location.href + '"]').addClass('active');
+});
 ///////////////////////////////////////////////////////////////////////////
 // Service Workers
 if ('serviceWorker' in navigator) {
