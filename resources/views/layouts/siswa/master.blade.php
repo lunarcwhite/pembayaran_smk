@@ -82,7 +82,7 @@
     <!-- * App Bottom Menu -->
 
     <!-- App Sidebar -->
-    @include('layouts.siswa.partial.sidebar')
+    {{-- @include('layouts.siswa.partial.sidebar') --}}
     <!-- * App Sidebar -->
 
     <!-- ///////////// Js Files ////////////////////  -->

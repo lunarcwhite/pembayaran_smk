@@ -7,7 +7,7 @@
     </a>
     <a href="{{route('dashboard.siswa.riwayat_pembayaran')}}" class="item">
         <div class="col">
-            <ion-icon name="cube-outline"></ion-icon>
+            <ion-icon name="refresh-outline"></ion-icon>
             <strong>Riwayat</strong>
         </div>
     </a>
@@ -20,13 +20,13 @@
     </a> --}}
     <a href="{{route('dashboard.siswa.pembayaran')}}" class="item">
         <div class="col">
-            <ion-icon name="layers-outline"></ion-icon>
+            <ion-icon name="cash-outline"></ion-icon>
             <strong>Pembayaran</strong>
         </div>
     </a>
-    <a href="javascript:;" class="item" data-toggle="modal" data-target="#sidebarPanel">
+    <a href="{{route('dashboard.siswa.profile')}}" class="item">
         <div class="col">
-            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="person-circle-outline"></ion-icon>
             <strong>Profile</strong>
         </div>
     </a>

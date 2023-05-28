@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\UserSettingsController;
+use App\Http\Controllers\Siswa\SiswaProfileController;
 use App\Http\Controllers\Admin\BiayaController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Siswa\InformasiPembayaranController;
@@ -72,6 +72,9 @@ Route::middleware('revalidate')->group(function () {
                             Route::controller(RiwayatPembayaranController::class)->group(function () {
                                 Route::get('/riwayat_pembayaran', 'index')->name('riwayat_pembayaran');
                             });
+                            Route::controller(SiswaProfileController::class)->group(function () {
+                                Route::get('/profile', 'index')->name('profile');
+                            });
                         });
                     });
                 });
@@ -79,10 +82,4 @@ Route::middleware('revalidate')->group(function () {
         });
     });
 });
-// Route::controller(UserSettingsController::class)->group(function () {
-//     Route::prefix('dashboard/user')->group(function () {
-//         Route::name('dashboard.user.')->group(function () {
-//             Route::get('/settings', 'index')->name('settings');
-//         });
-//     });
-// });
+
