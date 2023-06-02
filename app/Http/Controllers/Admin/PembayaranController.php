@@ -7,7 +7,7 @@ use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\DetailBiaya;
-use App\Models\Angkatan;
+use App\Models\TahunAjaran;
 use App\Models\Jurusan;
 use App\Models\Biaya;
 
@@ -56,7 +56,7 @@ class PembayaranController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'alert-type' => 'error',
-                'message' => 'Gagal Menyimpan.',
+                'message' => $th->getMessage(),
             ];
         }
         return redirect()
@@ -72,7 +72,7 @@ class PembayaranController extends Controller
         $data['siswa'] = Siswa::where('id', $id)->first();
         $id_siswa = $data['siswa'];
         $data['detail_biayas'] = DetailBiaya::where('jurusan_id', $id_siswa->jurusan_id)
-            ->where('angkatan_id', $id_siswa->angkatan_id)
+            ->where('tahun_ajaran_id', $id_siswa->tahun_ajaran_id)
             ->get();
         $data['riwayat_pembayarans'] = Pembayaran::where('siswa_id', $id)->get();
         $udb = $data['detail_biayas']

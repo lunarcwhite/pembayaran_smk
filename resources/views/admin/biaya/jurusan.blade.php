@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 @section('menuTitle')
-    Biaya {{$biaya->nama_biaya}} Angkatan {{$angkatan->angkatan}}
+    Biaya {{$biaya->nama_biaya}} Tahun Ajaran {{$tahun_ajaran->tahun_ajaran}}
 @stop
 @section('pageTitle')
 <div class="d-flex justify-content-between">

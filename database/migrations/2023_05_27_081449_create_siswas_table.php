@@ -16,12 +16,12 @@ return new class extends Migration
             $table->char('nisn', 10);
             $table->string('nama_siswa');
             $table->bigInteger('jurusan_id')->unsigned();
-            $table->bigInteger('angkatan_id')->unsigned();
+            $table->bigInteger('tahun_ajaran_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('angkatan_id')->references('id')->on('angkatans')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('tahun_ajaran_id')->references('id')->on('tahun_ajarans')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
 
         });

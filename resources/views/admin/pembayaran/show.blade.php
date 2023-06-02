@@ -29,9 +29,9 @@
                                 <td>{{ $siswa->nisn }}</td>
                             </tr>
                             <tr>
-                                <td>Angkatan</td>
+                                <td>Tahun Ajaran</td>
                                 <td>:</td>
-                                <td>{{ $siswa->angkatan->angkatan }}</td>
+                                <td>{{ $siswa->tahun_ajaran->tahun_ajaran }}</td>
                             </tr>
                             <tr>
                                 <td>Jurusan</td>

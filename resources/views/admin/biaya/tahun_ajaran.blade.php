@@ -1,10 +1,10 @@
 @extends('layouts.admin.master')
 @section('menuTitle')
-    Data Biaya Angkatan
+    Data Biaya Tahun Ajaran
 @stop
 @section('pageTitle')
 <div class="d-flex justify-content-between">
-    <h5>Pilih Angkatan</h5>
+    <h5>Pilih Tahun Ajaran</h5>
     <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
 </div>
 @stop
@@ -14,7 +14,7 @@
         <thead>
         <tr>
             <th class="font-weight-semi-bold border-top-0 py-2">#</th>
-            <th class="font-weight-semi-bold border-top-0 py-2">Angkatan</th>
+            <th class="font-weight-semi-bold border-top-0 py-2">Tahun Ajaran</th>
             <th class="font-weight-semi-bold border-top-0 py-2">Aksi</th>
         </tr>
         </thead>
@@ -22,9 +22,9 @@
             @forelse ($detail_biayas as $no => $detail_biaya)
             <tr>
                 <td class="py-3">{{$no+1}}</td>
-                <td class="py-3">{{$detail_biaya->angkatan->angkatan}}
+                <td class="py-3">{{$detail_biaya->tahun_ajaran->tahun_ajaran}}
                 </td>
-                <td class="py-3"><a href="{{url('dashboard/biaya/'.$detail_biaya->biaya_id.'/'.$detail_biaya->angkatan_id)}}" class="badge badge-info">Detail Biaya</a></td>
+                <td class="py-3"><a href="{{url('dashboard/biaya/'.$detail_biaya->biaya_id.'/'.$detail_biaya->tahun_ajaran_id)}}" class="badge badge-info">Detail Biaya</a></td>
             </tr> 
             @empty
             <h3>Belum Ada Data Pembiayaan</h3>    

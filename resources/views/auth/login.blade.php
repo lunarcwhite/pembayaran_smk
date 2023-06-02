@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Login</h4>
-                                <form method="POST" action="{{ route('authenticate') }}">
+                                <form method="POST" action="{{ url('authenticate') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">E-Mail Address / Username</label>

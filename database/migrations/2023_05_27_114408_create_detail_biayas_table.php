@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('detail_biayas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('jurusan_id')->unsigned();
-            $table->bigInteger('angkatan_id')->unsigned();
+            $table->bigInteger('tahun_ajaran_id')->unsigned();
             $table->bigInteger('biaya_id')->unsigned();
             $table->float('jumlah_biaya');
             $table->timestamps();
 
             $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('angkatan_id')->references('id')->on('angkatans')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('tahun_ajaran_id')->references('id')->on('tahun_ajarans')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('biaya_id')->references('id')->on('biayas')->onDelete('restrict')->onUpdate('cascade');
         });
     }

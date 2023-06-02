@@ -24,7 +24,7 @@
                         <tr>
                             <td>Angkatan</td>
                             <td>:</td>
-                            <td>{{ $siswa->angkatan->angkatan }}</td>
+                            <td>{{ $siswa->tahun_ajaran->tahun_ajaran }}</td>
                         </tr>
                         <tr>
                             <td>Jurusan</td>

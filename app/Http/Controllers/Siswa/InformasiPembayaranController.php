@@ -17,7 +17,7 @@ class InformasiPembayaranController extends Controller
         $data['siswa'] = Siswa::where('id', $id)->first();
         $siswa = $data['siswa'];
         $data['detail_biayas'] = DetailBiaya::where('jurusan_id', $siswa->jurusan_id)
-            ->where('angkatan_id', $siswa->angkatan_id)
+            ->where('tahun_ajaran_id', $siswa->tahun_ajaran_id)
             ->get();
         $data['riwayat_pembayarans'] = Pembayaran::where('siswa_id', $id)->get();
         $udb = $data['detail_biayas']

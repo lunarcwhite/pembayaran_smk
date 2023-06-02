@@ -58,7 +58,7 @@ Route::middleware('revalidate')->group(function () {
                 Route::middleware('admin')->group(function () {
                     Route::resource('biaya', BiayaController::class)->only('index', 'show', 'store');
                     Route::controller(BiayaController::class)->group(function () {
-                        Route::get('/biaya/{id_biaya}/{id_angkatan}', 'biaya')->name('biaya.show.jurusan');
+                        Route::get('/biaya/{id_biaya}/{id_tahun_ajaran}', 'biaya')->name('biaya.show.jurusan');
                     });
 
                     Route::resource('pembayaran', PembayaranController::class)->only('index', 'show', 'store');

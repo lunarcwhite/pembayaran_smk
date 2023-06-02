@@ -9,9 +9,9 @@ class DetailBiaya extends Model
 {
     use HasFactory;
 
-    public function angkatan()
+    public function tahun_ajaran()
     {
-        return $this->belongsTo(Angkatan::class, 'angkatan_id');
+        return $this->belongsTo(TahunAjaran::class, 'tahun_ajaran_id');
     }
     public function jurusan()
     {

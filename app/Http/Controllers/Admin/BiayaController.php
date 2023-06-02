@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Biaya;
-use App\Models\Angkatan;
+use App\Models\TahunAjaran;
 use App\Models\Jurusan;
 use App\Models\DetailBiaya;
 
@@ -80,19 +80,19 @@ class BiayaController extends Controller
     public function show(string $id)
     {
         $data['detail_biayas'] = DetailBiaya::where('biaya_id', $id)
-            ->distinct('angkatan_id')
-            ->orderBy('angkatan_id')
+            ->distinct('tahun_ajaran_id')
+            ->orderBy('tahun_ajaran_id')
             ->get();
-        return view('admin.biaya.angkatan')->with($data);
+        return view('admin.biaya.tahun_ajaran')->with($data);
     }
 
-    public function biaya(string $id_biaya, string $id_angkatan)
+    public function biaya(string $id_biaya, string $id_tahun_ajaran)
     {
         $data['detail_biayas'] = DetailBiaya::where('biaya_id', $id_biaya)
-            ->where('angkatan_id', $id_angkatan)
+            ->where('tahun_ajaran_id', $id_tahun_ajaran)
             ->get();
         $data['biaya'] = Biaya::where('id', $id_biaya)->first();
-        $data['angkatan'] = Angkatan::where('id', $id_angkatan)->first();
+        $data['tahun_ajaran'] = TahunAjaran::where('id', $id_tahun_ajaran)->first();
         return view('admin.biaya.jurusan')->with($data);
     }
 
@@ -110,7 +110,7 @@ class BiayaController extends Controller
     public function update(Request $request, Biaya $biaya)
     {
         $validate = $request->validate([
-            'nama_Biaya' => 'unique:Biayas,nama_Biaya',
+            'nama_biaya' => 'unique:biayas,nama_biaya',
         ]);
         $this->getOneBiaya($biaya->id)->update($request->all());
         $notification = [

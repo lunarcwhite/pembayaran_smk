@@ -6,7 +6,7 @@
     <div class="section mt-2">
         <div class="card mb-3">
             <div class="card-body text-center">
-                <img src="img/avatars/avatar-4.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128"
+                <img src="{{asset('siswa/assets/img/sample/avatar/avatar4.jpg')}}" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128"
                     height="128" />
                 <h5 class="card-title mb-0">{{ auth()->user()->siswa->nama_siswa }}</h5>
                 <div class="text-muted mb-2">{{ auth()->user()->siswa->jurusan->nama_jurusan }}</div>

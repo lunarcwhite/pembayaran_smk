@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Jurusan;
-use App\Models\Angkatan;
+use App\Models\TahunAjaran;
 use App\Models\Siswa;
 use Faker\Factory as faker;
 
@@ -21,11 +21,11 @@ class SiswaSeeder extends Seeder
         $faker = Faker::create('id_ID');
         foreach($users as $no => $user){
             $jurusan = Jurusan::inRandomOrder()->pluck('id')->first();
-            $angkatan = Angkatan::inRandomOrder()->pluck('id')->first();
+            $angkatan = TahunAjaran::inRandomOrder()->pluck('id')->first();
             $siswa = Siswa::create([
                 'user_id' => $user->id,
                 'jurusan_id' => $jurusan,
-                'angkatan_id' => $angkatan,
+                'tahun_ajaran_id' => $angkatan,
                 'nisn' => rand(0000000000, 9999999999),
                 'nama_siswa' => $faker->name,
             ]);

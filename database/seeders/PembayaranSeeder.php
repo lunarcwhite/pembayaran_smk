@@ -20,7 +20,7 @@ class PembayaranSeeder extends Seeder
         $bayar = [100000, 125000, 150000, 175000, 200000, 250000];
         for ($i=0; $i < 400; $i++) {
             $siswa = Siswa::inRandomOrder()->first(); 
-            $pembayaran = DetailBiaya::where('jurusan_id', $siswa->jurusan_id)->where('angkatan_id', $siswa->angkatan_id)->inRandomOrder()->first();
+            $pembayaran = DetailBiaya::where('jurusan_id', $siswa->jurusan_id)->where('tahun_ajaran_id', $siswa->tahun_ajaran_id)->inRandomOrder()->first();
             $angka = rand(00000000,99999999);
             $kwitansi = 'b/'.$pembayaran->biaya->nama_biaya.'/'.date('Y-m-d').'/'.$siswa->id.'/'.$angka;
             $data = [
