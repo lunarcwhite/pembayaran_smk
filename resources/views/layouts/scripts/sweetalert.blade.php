@@ -51,12 +51,12 @@
         @php
             $message = '';
             foreach ($errors->all() as $error) {
-                $message .= "<li> $error </li>";
+                $message .= `<li> $error </li>`;
             }
         @endphp
         Swal.fire({
             text: 'Error',
-            html: "{!! $message !!}",
+            html: `{!! $message !!}`,
             icon: 'error',
         })
     @endif

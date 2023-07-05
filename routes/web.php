@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Siswa\SiswaProfileController;
 use App\Http\Controllers\Admin\BiayaController;
 use App\Http\Controllers\Admin\PembayaranController;
+use App\Http\Controllers\Admin\TahunAjaranController;
 use App\Http\Controllers\Siswa\InformasiPembayaranController;
 use App\Http\Controllers\Siswa\RiwayatPembayaranController;
 
@@ -57,8 +58,10 @@ Route::middleware('revalidate')->group(function () {
                 });
                 Route::middleware('admin')->group(function () {
                     Route::resource('biaya', BiayaController::class)->only('index', 'show', 'store');
+                    Route::resource('tahunAjaran', TahunAjaranController::class)->except('create');
                     Route::controller(BiayaController::class)->group(function () {
                         Route::get('/biaya/{id_biaya}/{id_tahun_ajaran}', 'biaya')->name('biaya.show.jurusan');
+                        Route::post('/biaya/tambah', 'tambah')->name('biaya.tambah');
                     });
 
                     Route::resource('pembayaran', PembayaranController::class)->only('index', 'show', 'store');

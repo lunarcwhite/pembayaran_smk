@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class DetailBiaya extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function tahun_ajaran()
     {
-        return $this->belongsTo(TahunAjaran::class, 'tahun_ajaran_id');
+        return $this->belongsTo(TahunAjaran::class, 'tahun_ajaran_id', 'id');
     }
     public function jurusan()
     {

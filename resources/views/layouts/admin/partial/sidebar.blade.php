@@ -14,6 +14,12 @@
         Master Data
     </li>
     <li class="sidebar-item">
+        <a class="sidebar-link" href="{{route('dashboard.tahunAjaran.index')}}">
+            <i class="align-middle" data-feather="tag"></i> <span
+                class="align-middle">Tahun Ajaran</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('dashboard.biaya.index')}}">
               <i class="align-middle" data-feather="tag"></i> <span
                   class="align-middle">Kelola Biaya</span>

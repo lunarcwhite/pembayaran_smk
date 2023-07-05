@@ -28,6 +28,8 @@ class BiayaController extends Controller
     public function index()
     {
         $data['biayas'] = $this->getBiaya();
+        $data['tahunAjarans'] = TahunAjaran::all();
+        $data['jurusans'] = Jurusan::all();
         return view('admin.biaya.index')->with($data);
     }
 
@@ -74,13 +76,48 @@ class BiayaController extends Controller
             ->with($notification);
     }
 
+    public function tambah(Request $request)
+    {
+        // dd($request->all());
+        $validate = $request->validate([
+            'nama_biaya' => 'required',
+            'tahun_ajaran_id' => 'required',
+            'jurusan_id' => 'required'
+        ]);
+        try {
+            Biaya::create([
+                'nama_biaya' => $request->nama_biaya
+            ]);
+            $biaya = Biaya::latest()->first();
+            foreach($request->tahun_ajaran_id as $tahunAjaranId => $tahunAjaran){
+                foreach($request->jurusan_id as $jurusanId => $jurusan){
+                    $data = [
+                        'tahun_ajaran_id' => $tahunAjaran,
+                        'jurusan_id' => $jurusan,
+                        'biaya_id' => $biaya->id,
+                        'jumlah_biaya' => 0
+                    ];
+                    DetailBiaya::create($data);
+                }
+            }
+            $notification = [
+                'alert-type' => 'success',
+                'message' => 'Berhasil Menambah Biaya',
+            ];
+            return redirect()
+                ->back()
+                ->with($notification);
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors('Aksi gagal!');
+        }
+    }
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $data['detail_biayas'] = DetailBiaya::where('biaya_id', $id)
-            ->distinct('tahun_ajaran_id')
+        $data['detail_biayas'] = DetailBiaya::distinct('tahun_ajaran_id')->where('biaya_id', $id)
             ->orderBy('tahun_ajaran_id')
             ->get();
         return view('admin.biaya.tahun_ajaran')->with($data);
