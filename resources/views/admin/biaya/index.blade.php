@@ -3,7 +3,10 @@
     Data Biaya
 @stop
 @section('pageTitle')
-    Daftar Biaya
+<div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBiaya">Tambah</button>
+    <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
+</div>
 @stop
 @section('content')
 <div class="table-responsive-xl">
@@ -21,7 +24,9 @@
                 <td class="py-3">{{$no+1}}</td>
                 <td class="py-3">{{$biaya->nama_biaya}}
                 </td>
-                <td class="py-3"><a href="{{route('dashboard.biaya.show',$biaya->id)}}" class="badge badge-info">Detail Biaya</a></td>
+                <td class="py-3"><a href="{{route('dashboard.biaya.show',$biaya->id)}}" class="btn btn-sm btn-info">Detail Biaya</a>
+                <button class="btn btn-sm btn-warning">Atur</button>
+                </td>
             </tr> 
             @empty
             <h3>Belum Ada Data Pembiayaan</h3>    
@@ -29,4 +34,6 @@
         </tbody>
     </table>
 </div>
+@include('admin.biaya.modal_biaya')
+@include('admin.biaya.modal_biaya_atur')
 @stop

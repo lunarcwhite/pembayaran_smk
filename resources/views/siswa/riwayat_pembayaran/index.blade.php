@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="dataTable">
                     <thead>
                         <th>#</th>
                         <th>No Kwitansi</th>

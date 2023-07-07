@@ -53,15 +53,14 @@ class PembayaranController extends Controller
                 'alert-type' => 'success',
                 'message' => 'Pembayaran Berhasil Disimpan',
             ];
-        } catch (\Throwable $th) {
-            $notification = [
-                'alert-type' => 'error',
-                'message' => $th->getMessage(),
-            ];
-        }
-        return redirect()
+            return redirect()
             ->back()
             ->with($notification);
+        } catch (\Throwable $th) {
+            return redirect()
+            ->back()
+            ->withErrors('Aksi Gagal');
+        }
     }
 
     /**
