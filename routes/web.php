@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\TahunAjaranController;
 use App\Http\Controllers\Admin\JurusanController;
 use App\Http\Controllers\Siswa\InformasiPembayaranController;
 use App\Http\Controllers\Siswa\RiwayatPembayaranController;
+use App\Http\Controllers\Admin\KelolaSiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::middleware('revalidate')->group(function () {
                 });
                 Route::middleware('admin')->group(function () {
                     Route::resource('biaya', BiayaController::class)->only('index', 'show', 'store');
+                    Route::resource('ksiswa', KelolaSiswaController::class)->except('create');
                     Route::resource('tahunAjaran', TahunAjaranController::class)->only(['index','store','edit','update']);
                     Route::resource('jurusan', JurusanController::class)->only(['index','store','edit','update', 'destroy']);
                     Route::controller(BiayaController::class)->group(function () {
