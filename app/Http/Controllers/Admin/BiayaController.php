@@ -79,8 +79,9 @@ class BiayaController extends Controller
      */
     public function show(string $id)
     {
-        $data['detail_biayas'] = DetailBiaya::where('biaya_id', $id)
-            ->distinct('tahun_ajaran_id')
+        $data['detail_biayas'] = DetailBiaya::distinct()
+            ->select('tahun_ajaran_id')
+            ->where('biaya_id', $id)
             ->orderBy('tahun_ajaran_id')
             ->get();
         return view('admin.biaya.tahun_ajaran')->with($data);

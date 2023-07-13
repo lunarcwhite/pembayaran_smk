@@ -1,4 +1,5 @@
-<div class="appBottomMenu">
+<div class="android-detection">
+   <div class="appBottomMenu">
     <a href="{{route('dashboard.')}}" class="item">
         <div class="col">
             <ion-icon name="home-outline"></ion-icon>
@@ -30,4 +31,6 @@
             <strong>Profile</strong>
         </div>
     </a>
+</div> 
 </div>
+
