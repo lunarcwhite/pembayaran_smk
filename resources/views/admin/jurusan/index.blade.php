@@ -1,11 +1,11 @@
 @extends('layouts.admin.master')
 @section('menuTitle')
-    Tahun Ajaran
+    Data Jurusan
 @stop
 @section('pageTitle')
     <div class="d-flex justify-content-between">
-        <button type="button" onclick="clearInput('formTahunAjaran','Tambah Tahun Ajaran','dashboard/tahunAjaran')"
-            class="btn btn-info" data-toggle="modal" data-target="#modalTahunAjaran">Tambah</button>
+        <button type="button" onclick="clearInput('formJurusan','Tambah Jurusan','dashboard/jurusan')" class="btn btn-info"
+            data-toggle="modal" data-target="#modalJurusan">Tambah</button>
         <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
     </div>
 @stop
@@ -14,29 +14,36 @@
         <div class="col-md-12 col-sm-12">
             <div class="card text-white mb-3">
                 <div class="card-header">
-                    <h4>Tahun Ajaran</h4>
+                    <h4>Jurusan</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover text-dark" id="dataTable">
                             <thead>
                                 <th>#</th>
-                                <th>Tahun Ajaran</th>
+                                <th>Nama Jurusan</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
-                                @forelse ($tahunAjarans as $no => $tahunAjaran)
+                                @forelse ($jurusans as $no => $jurusan)
                                     <tr>
                                         <td>{{ $no + 1 }}</td>
-                                        <td>{{ $tahunAjaran->tahun_ajaran }}</td>
+                                        <td>{{ $jurusan->nama_jurusan }}</td>
                                         <td>
-                                            
+                                            <form action="{{ route('dashboard.jurusan.destroy', $jurusan->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
                                                 <button type="button" class="btn btn-info" data-toggle="modal"
-                                                    data-target="#modalTahunAjaran"
-                                                    onclick="editTahunAjaran('{{ $tahunAjaran->id }}','formTahunAjaran')">
+                                                    data-target="#modalJurusan"
+                                                    onclick="editJurusan('{{ $jurusan->id }}','formJurusan')">
                                                     Edit
                                                 </button>
-                                                
+                                                <button type="button"
+                                                    onclick="formConfirmation('Hapus Jurusan {{ $jurusan->nama_jurusan }}')"
+                                                    class="btn btn-danger">Hapus</button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @empty
@@ -50,23 +57,23 @@
         </div>
     </div>
     <hr />
-    @include('admin.tahun_ajaran.modal_tahun_ajaran')
+    @include('admin.jurusan.modal_jurusan')
 @stop
 @push('js')
     <script>
-        function editTahunAjaran(id, idForm) {
+        function editJurusan(id, idForm) {
             $.ajax({
                 type: "get",
-                url: `{{ url('dashboard/tahunAjaran/${id}/edit') }}`,
+                url: `{{ url('dashboard/jurusan/${id}/edit') }}`,
                 dataType: 'json',
                 success: function(res) {
-                    $("#tahun_ajaran").val(res.tahun_ajaran);
-                    $(`#labelModal`).text('Edit Tahun Ajaran');
+                    $("#nama_jurusan").val(res.nama_jurusan);
+                    $(`#labelModal`).text('Edit Jurusan');
                     $(`#btn-submit`).text('Update');
                     $('#update').append(
                         `@method('put')`
                     );
-                    document.getElementById(idForm).action = `{{ url('dashboard/tahunAjaran/${res.id}') }}`;
+                    document.getElementById(idForm).action = `{{ url('dashboard/jurusan/${res.id}') }}`;
                 }
             });
         }

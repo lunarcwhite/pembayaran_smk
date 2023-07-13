@@ -58,13 +58,9 @@ class BiayaController extends Controller
                     'jumlah_biaya' => $biaya[$index],
                 ]);
             } catch (\Throwable $th) {
-                $notification = [
-                    'alert-type' => 'error',
-                    'message' => 'Gagal Memperbarui UDB ',
-                ];
                 return redirect()
                     ->back()
-                    ->with($notification);
+                    ->withErrors('Gagal memperbarui!');
             }
         }
         $notification = [
@@ -82,45 +78,117 @@ class BiayaController extends Controller
         $validate = $request->validate([
             'nama_biaya' => 'required',
             'tahun_ajaran_id' => 'required',
-            'jurusan_id' => 'required'
+            'jurusan_id' => 'required',
         ]);
         try {
             Biaya::create([
-                'nama_biaya' => $request->nama_biaya
+                'nama_biaya' => $request->nama_biaya,
             ]);
             $biaya = Biaya::latest()->first();
-            foreach($request->tahun_ajaran_id as $tahunAjaranId => $tahunAjaran){
-                foreach($request->jurusan_id as $jurusanId => $jurusan){
+            foreach ($request->tahun_ajaran_id as $tahunAjaranId => $tahunAjaran) {
+                foreach ($request->jurusan_id as $jurusanId => $jurusan) {
                     $data = [
                         'tahun_ajaran_id' => $tahunAjaran,
                         'jurusan_id' => $jurusan,
                         'biaya_id' => $biaya->id,
-                        'jumlah_biaya' => 0
+                        'jumlah_biaya' => 0,
                     ];
                     DetailBiaya::create($data);
                 }
             }
-            $notification = [
-                'alert-type' => 'success',
-                'message' => 'Berhasil Menambah Biaya',
-            ];
+        } catch (\Throwable $th) {
+            dd($th);
             return redirect()
                 ->back()
-                ->with($notification);
-        } catch (\Throwable $th) {
-            return redirect()->back()->withErrors('Aksi gagal!');
+                ->withErrors('Aksi gagal!');
         }
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Berhasil Menambahkan!',
+        ];
+        return redirect()
+            ->back()
+            ->with($notification);
     }
-
+    public function tambahTahunAjaran($id, Request $request)
+    {
+        // dd($request->all());
+        $validate = $request->validate([
+            'tahun_ajaran_id' => 'required',
+        ]);
+        try {
+            foreach ($request->tahun_ajaran_id as $tahunAjaranId => $tahunAjaran) {
+                $data = [
+                    'tahun_ajaran_id' => $tahunAjaran,
+                    'jurusan_id' => null,
+                    'biaya_id' => $id,
+                    'jumlah_biaya' => 0,
+                ];
+                DetailBiaya::create($data);
+            }
+        } catch (\Throwable $th) {
+            return redirect()
+                ->back()
+                ->withErrors('Aksi gagal!');
+        }
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Berhasil Menambahkan!',
+        ];
+        return redirect()
+            ->back()
+            ->with($notification);
+    }
+    public function jurusanTambah(Request $request)
+    {
+        // dd($request->all());
+        $validate = $request->validate([
+            'jurusan_id' => 'required',
+        ]);
+        try {
+            foreach ($request->jurusan_id as $jurusan_id) {
+                $data = [
+                    'tahun_ajaran_id' => $request->id_tahun_ajaran,
+                    'jurusan_id' => $jurusan_id,
+                    'biaya_id' => $request->id_biaya,
+                    'jumlah_biaya' => 0,
+                ];
+                DetailBiaya::create($data);
+            }
+            DetailBiaya::where('biaya_id', $request->id_biaya)->where('tahun_ajaran_id', $request->id_tahun_ajaran)->where('jurusan_id', null)->delete();
+        } catch (\Throwable $th) {
+            return redirect()
+                ->back()
+                ->withErrors('Aksi gagal!');
+        }
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Berhasil Menambahkan!',
+        ];
+        return redirect()
+            ->back()
+            ->with($notification);
+    }
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-
-        $data['detail_biayas'] = DetailBiaya::distinct('tahun_ajaran_id')->where('biaya_id', $id)
+        $data['detail_biayas'] = DetailBiaya::distinct('tahun_ajaran_id')
+            ->where('biaya_id', $id)
             ->orderBy('tahun_ajaran_id')
             ->get();
+        $data['tahunAjarans'] = [];
+        $tahunAjaran = TahunAjaran::all();
+        // dd($tahunAjaran);
+        foreach ($tahunAjaran as $item) {
+            $ada = DetailBiaya::where('biaya_id', $id)
+                ->where('tahun_ajaran_id', $item->id)
+                ->first();
+            if (!$ada) {
+                array_push($data['tahunAjarans'], ['id' => $item->id, 'tahun_ajaran' => $item->tahun_ajaran]);
+            }
+        }
         return view('admin.biaya.tahun_ajaran')->with($data);
     }
 
@@ -129,6 +197,18 @@ class BiayaController extends Controller
         $data['detail_biayas'] = DetailBiaya::where('biaya_id', $id_biaya)
             ->where('tahun_ajaran_id', $id_tahun_ajaran)
             ->get();
+        $jurusan = Jurusan::all();
+        $data['jurusans'] = [];
+        // dd($tahunAjaran);
+        foreach ($jurusan as $item) {
+            $ada = DetailBiaya::where('biaya_id', $id_biaya)
+                ->where('jurusan_id', $item->id)
+                ->where('tahun_ajaran_id', $id_tahun_ajaran)
+                ->first();
+            if (!$ada) {
+                array_push($data['jurusans'], ['id' => $item->id, 'nama_jurusan' => $item->nama_jurusan]);
+            }
+        }
         $data['biaya'] = Biaya::where('id', $id_biaya)->first();
         $data['tahun_ajaran'] = TahunAjaran::where('id', $id_tahun_ajaran)->first();
         return view('admin.biaya.jurusan')->with($data);

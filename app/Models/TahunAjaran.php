@@ -10,4 +10,9 @@ class TahunAjaran extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function detailBiaya()
+    {
+        return $this->hasMany(DetailBiaya::class, 'tahun_ajaran_id');
+    }    
 }

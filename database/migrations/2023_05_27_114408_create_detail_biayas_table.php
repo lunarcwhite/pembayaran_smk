@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('detail_biayas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('jurusan_id')->unsigned();
+            $table->bigInteger('jurusan_id')->unsigned()->nullable();
             $table->bigInteger('tahun_ajaran_id')->unsigned();
             $table->bigInteger('biaya_id')->unsigned();
             $table->float('jumlah_biaya');

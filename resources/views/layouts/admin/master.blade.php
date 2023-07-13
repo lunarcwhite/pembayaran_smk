@@ -53,7 +53,7 @@
 
     @include('layouts.scripts.sweetalert')
     @include('layouts.scripts.dataTable')
-    <script>
+       <script>
         function clearInput(formId, label = "", action = "") {
             document.getElementById(formId).reset();
             $(".file").val("");
@@ -63,6 +63,7 @@
                 `{{ url('${action}') }}`;
             $("#update").empty();
             $('.image-preview').empty();
+            $(".gambar").empty();
             $(".kapilih").removeAttr('selected');
         }
     </script>

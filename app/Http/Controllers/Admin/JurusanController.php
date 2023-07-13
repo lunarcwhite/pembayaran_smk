@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TahunAjaran;
-use Illuminate\Http\Request;
 use App\Models\Jurusan;
-use App\Models\Biaya;
-use App\Models\DetailBiaya;
+use Illuminate\Http\Request;
 
-class TahunAjaranController extends Controller
+class JurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['tahunAjarans'] = TahunAjaran::all();
-        return view('admin.tahun_ajaran.index')->with($data);
+        $data['jurusans'] = Jurusan::orderBy('nama_jurusan', 'asc')->get();
+        return view('admin.jurusan.index')->with($data);
     }
 
     /**
@@ -34,24 +31,13 @@ class TahunAjaranController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'tahun_ajaran' => 'required|unique:tahun_ajarans,tahun_ajaran',
+            'nama_jurusan' => 'required|unique:jurusans,nama_jurusan',
         ]);
         try {
-            TahunAjaran::create($request->all());
-            $tahunAjaran = TahunAjaran::latest()->first();
-            $jurusans = Jurusan::all();
-            foreach($jurusans as $jurusan){
-                $data = [
-                    'tahun_ajaran_id' => $tahunAjaran->id,
-                    'jurusan_id' => $jurusan->id,
-                    'biaya_id' => 1,
-                    'jumlah_biaya' => 0
-                ];
-                DetailBiaya::create($data);
-            }
+            Jurusan::create($request->all());
             $notification = [
                 'alert-type' => 'success',
-                'message' => 'Tahun Ajaran Berhasil Ditambahkan',
+                'message' => 'Jurusan Berhasil Ditambahakan',
             ];
             return redirect()
             ->back()
@@ -60,14 +46,14 @@ class TahunAjaranController extends Controller
             // dd($th->getMessage());
             return redirect()
             ->back()
-            ->withErrors('Gagal menambahkan tahun ajaran!');
+            ->withErrors('Gagal Menambahkan Jurusan!');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TahunAjaran $tahunAjaran)
+    public function show(Jurusan $jurusan)
     {
         //
     }
@@ -75,26 +61,26 @@ class TahunAjaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TahunAjaran $tahunAjaran)
+    public function edit(Jurusan $jurusan)
     {
-        return $tahunAjaran;
+        return $jurusan;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, String $tahunAjaran)
+    public function update(Request $request, String $jurusan)
     {
         $validate = $request->validate([
-            'tahun_ajaran' => 'required|unique:tahun_ajarans,tahun_ajaran',
+            'nama_jurusan' => 'required|unique:jurusans,nama_jurusan',
         ]);
         try {
-            TahunAjaran::where('id', $tahunAjaran)->update([
-                'tahun_ajaran' => $request->tahun_ajaran
+            Jurusan::where('id', $jurusan)->update([
+                'nama_jurusan' => $request->nama_jurusan
             ]);
             $notification = [
                 'alert-type' => 'success',
-                'message' => 'Tahun Ajaran Berhasil Diperbarui',
+                'message' => 'Jurusan Berhasil Diperbarui',
             ];
             return redirect()
             ->back()
@@ -103,15 +89,29 @@ class TahunAjaranController extends Controller
             // dd($th->getMessage());
             return redirect()
             ->back()
-            ->withErrors('Gagal memperbarui tahun ajaran!');
+            ->withErrors('Gagal memperbarui Jurusan!');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TahunAjaran $tahunAjaran)
+    public function destroy(Jurusan $jurusan)
     {
-        //
+        try {
+            Jurusan::where('id', $jurusan->id)->delete();
+            $notification = [
+                'alert-type' => 'success',
+                'message' => 'Jurusan Berhasil Dihapus!',
+            ];
+        } catch (\Throwable $th) {
+            // dd($th->getMessage());
+            return redirect()
+            ->back()
+            ->withErrors('Gagal Menghapus Jurusan!');
+        }
+        return redirect()
+        ->back()
+        ->with($notification);
     }
 }

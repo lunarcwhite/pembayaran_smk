@@ -15,6 +15,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
     <link rel="stylesheet" href="{{ asset('siswa/assets/css/style.css') }}">
     <link rel="manifest" href="{{ asset('siswa/__manifest.json') }}">
+    <style>
+        .file {
+            visibility: hidden;
+            position: absolute;
+        }
+        body.dark-mode-active h3{
+            color: black;
+        }
+    </style>
 </head>
 
 <body class="bg-white">

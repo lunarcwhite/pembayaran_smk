@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="formConfirmation('Tambah Tahun Ajaran?')"
+                    <button type="button" onclick="formConfirmation('Tambah Biaya?')"
                         class="btn btn-primary">Tambah</button>
                 </div>
             </form>

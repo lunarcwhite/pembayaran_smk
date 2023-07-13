@@ -1,4 +1,9 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css
+" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js
+"></script>
 <script>
     const Toast = Swal.mixin({
         toast: true,
@@ -15,32 +20,32 @@
             case 'info':
                 Toast.fire({
                     icon: 'info',
-                    text: "{{ Session::get('message') }}"
+                    title: "{{ Session::get('message') }}"
                 })
                 break;
             case 'success':
                 Toast.fire({
                     icon: 'success',
-                    text: "{{ Session::get('message') }}"
+                    title: "{{ Session::get('message') }}"
                 })
                 break;
             case 'warning':
                 Toast.fire({
                     icon: 'warning',
-                    text: "{{ Session::get('message') }}"
+                    title: "{{ Session::get('message') }}"
                 })
                 break;
             case 'error':
                 Swal.fire({
                     icon: 'error',
-                    text: "Gagal",
+                    title: "Gagal",
                     html: "{{ Session::get('message') }}",
                 })
                 break;
             case 'dialog_error':
                 Swal.fire({
                     icon: 'error',
-                    text: "Oppssss",
+                    title: "Oppssss",
                     text: "{{ Session::get('message') }}",
                     timer: 3000
                 })
@@ -51,38 +56,36 @@
         @php
             $message = '';
             foreach ($errors->all() as $error) {
-                $message .= `<li> $error </li>`;
+                $message .= "<li> $error </li>";
             }
         @endphp
         Swal.fire({
-            text: 'Error',
+            title: 'Error',
             html: `{!! $message !!}`,
             icon: 'error',
         })
     @endif
 
     function formConfirmation(message) {
-            var form = event.target.form;
+        var form = event.target.form;
+        Swal.fire({
+            html: `<h3>${message}</h3>`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        })
+    }
+        function formConfirmationId(formId, message) {
+            var form = $(`${formId}`);
             Swal.fire({
-                html: message,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
-                }
-            })
-        }
-
-        function formConfirmationId(idForm, message) {
-            var form = $(`${idForm}`);
-            console.log();
-            Swal.fire({
-                html: message,
+                html: `<h3>${message}</h3>`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

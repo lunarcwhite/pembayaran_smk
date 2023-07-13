@@ -15,8 +15,20 @@
     </li>
     <li class="sidebar-item">
         <a class="sidebar-link" href="{{route('dashboard.tahunAjaran.index')}}">
-            <i class="align-middle" data-feather="tag"></i> <span
+            <i class="align-middle" data-feather="award"></i> <span
                 class="align-middle">Tahun Ajaran</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a class="sidebar-link" href="{{route('dashboard.jurusan.index')}}">
+            <i class="align-middle" data-feather="sliders"></i> <span
+                class="align-middle">Jurusan</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a class="sidebar-link" href="{{route('dashboard.tahunAjaran.index')}}">
+            <i class="align-middle" data-feather="users"></i> <span
+                class="align-middle">Siswa</span>
         </a>
     </li>
     <li class="sidebar-item">

@@ -25,7 +25,6 @@
                 <td class="py-3">{{$biaya->nama_biaya}}
                 </td>
                 <td class="py-3"><a href="{{route('dashboard.biaya.show',$biaya->id)}}" class="btn btn-sm btn-info">Detail Biaya</a>
-                <button class="btn btn-sm btn-warning">Atur</button>
                 </td>
             </tr> 
             @empty
@@ -35,5 +34,4 @@
     </table>
 </div>
 @include('admin.biaya.modal_biaya')
-@include('admin.biaya.modal_biaya_atur')
 @stop

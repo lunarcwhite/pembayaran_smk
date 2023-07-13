@@ -60,6 +60,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <hr/>
                 </div>
             </div>
         </div>
@@ -94,6 +95,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <p class="text-hint text-dark">Note: Biaya UDB dikali 36</p>
                     <hr/>
                     <table class="table text-dark table-bordered">
                         <tbody>

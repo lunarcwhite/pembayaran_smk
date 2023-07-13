@@ -1,11 +1,11 @@
 @extends('layouts.admin.master')
 @section('menuTitle')
-    Data Biaya Tahun Ajaran
+    Data Biaya {{$detail_biayas[0]->biaya->nama_biaya}}
 @stop
 @section('pageTitle')
 <div class="d-flex justify-content-between">
-    <h5>Pilih Tahun Ajaran</h5>
-    <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBiaya">Tambah Tahun Ajaran</button>
+    <a href="{{route('dashboard.biaya.index')}}" class="btn btn-primary">Kembali</a>
 </div>
 @stop
 @section('content')
@@ -32,4 +32,5 @@
         </tbody>
     </table>
 </div>
+@include('admin.biaya.modal_tahun_ajaran')
 @stop

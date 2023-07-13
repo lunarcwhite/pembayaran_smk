@@ -103,6 +103,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <p class="text-hint mt-1">Note: Biaya UDB dikali 36 bulan</p>
+                <hr/>
             </div>
         </div>
     </div>
