@@ -117,6 +117,7 @@ class BiayaController extends Controller
      */
     public function show(string $id)
     {
+
         $data['detail_biayas'] = DetailBiaya::distinct('tahun_ajaran_id')->where('biaya_id', $id)
             ->orderBy('tahun_ajaran_id')
             ->get();
