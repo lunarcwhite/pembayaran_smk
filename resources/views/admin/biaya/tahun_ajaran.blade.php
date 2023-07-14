@@ -4,8 +4,8 @@
 @stop
 @section('pageTitle')
 <div class="d-flex justify-content-between">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBiaya">Tambah Tahun Ajaran</button>
     <a href="{{route('dashboard.biaya.index')}}" class="btn btn-primary">Kembali</a>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBiaya">Tambah Tahun Ajaran</button>
 </div>
 @stop
 @section('content')

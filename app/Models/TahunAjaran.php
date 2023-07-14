@@ -14,5 +14,9 @@ class TahunAjaran extends Model
     public function detailBiaya()
     {
         return $this->hasMany(DetailBiaya::class, 'tahun_ajaran_id');
-    }    
+    }   
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'jurusan_id');
+    } 
 }

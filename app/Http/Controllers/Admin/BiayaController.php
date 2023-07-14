@@ -81,23 +81,25 @@ class BiayaController extends Controller
             'jurusan_id' => 'required',
         ]);
         try {
+            $biaya = Biaya::latest('id')->first();
+            $id_biaya = $biaya->id + 1;
             Biaya::create([
+                'id' => $id_biaya,
                 'nama_biaya' => $request->nama_biaya,
             ]);
-            $biaya = Biaya::latest()->first();
             foreach ($request->tahun_ajaran_id as $tahunAjaranId => $tahunAjaran) {
                 foreach ($request->jurusan_id as $jurusanId => $jurusan) {
                     $data = [
                         'tahun_ajaran_id' => $tahunAjaran,
                         'jurusan_id' => $jurusan,
-                        'biaya_id' => $biaya->id,
+                        'biaya_id' => $id_biaya,
                         'jumlah_biaya' => 0,
                     ];
                     DetailBiaya::create($data);
                 }
             }
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
             return redirect()
                 ->back()
                 ->withErrors('Aksi gagal!');

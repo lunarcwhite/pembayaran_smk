@@ -12,62 +12,8 @@
                 <div class="text-muted mb-2">{{ auth()->user()->siswa->jurusan->nama_jurusan }}</div>
             </div>
             <hr class="my-0" />
-            <div class="card-body">
-                <h5 class="h6 card-title">Skills</h5>
-                <a href="#" class="badge badge-primary mr-1 my-1">HTML</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">JavaScript</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">Sass</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">Angular</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">Vue</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">React</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">Redux</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">UI</a>
-                <a href="#" class="badge badge-primary mr-1 my-1">UX</a>
-            </div>
-            <hr class="my-0" />
             <div class="listview-title mt-2">Navigation</div>
             <ul class="listview image-listview flush transparent">
-
-                <li>
-                    <a href="component-appbottommenu.html" class="item">
-                        <div class="icon-box bg-primary">
-                            <ion-icon name="albums-outline"></ion-icon>
-                        </div>
-                        <div class="in">
-                            Bottom Menu
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="component-appheader.html" class="item">
-                        <div class="icon-box bg-primary">
-                            <ion-icon name="chevron-back-outline"></ion-icon>
-                        </div>
-                        <div class="in">
-                            Header
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="component-animated-header.html" class="item">
-                        <div class="icon-box bg-primary">
-                            <ion-icon name="arrow-down-outline"></ion-icon>
-                        </div>
-                        <div class="in">
-                            Animated Header
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="component-appheader-tab.html" class="item">
-                        <div class="icon-box bg-primary">
-                            <ion-icon name="ellipsis-horizontal"></ion-icon>
-                        </div>
-                        <div class="in">
-                            Header with Tab
-                        </div>
-                    </a>
-                </li>
                 <li>
                     <div class="item">
                         <div class="icon-box bg-primary">

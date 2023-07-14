@@ -60,7 +60,12 @@ Route::middleware('revalidate')->group(function () {
                 });
                 Route::middleware('admin')->group(function () {
                     Route::resource('biaya', BiayaController::class)->only('index', 'show', 'store');
-                    Route::resource('ksiswa', KelolaSiswaController::class)->except('create');
+                    Route::resource('ksiswa', KelolaSiswaController::class)->except('create','index');
+                    Route::controller(KelolaSiswaController::class)->group(function () {
+                        Route::get('/ksiswa', 'tahunAjaran')->name('ksiswa.tahunAjaran');
+                        Route::get('/ksiswa/{tahun_ajaran}/{jurusan}', 'siswa')->name('ksiswa.siswa');
+                        Route::post('/ksiswa/import', 'import')->name('ksiswa.import');
+                    });
                     Route::resource('tahunAjaran', TahunAjaranController::class)->only(['index','store','edit','update']);
                     Route::resource('jurusan', JurusanController::class)->only(['index','store','edit','update', 'destroy']);
                     Route::controller(BiayaController::class)->group(function () {

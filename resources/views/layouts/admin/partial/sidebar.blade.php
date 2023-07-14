@@ -26,7 +26,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{route('dashboard.tahunAjaran.index')}}">
+        <a class="sidebar-link" href="{{route('dashboard.ksiswa.tahunAjaran')}}">
             <i class="align-middle" data-feather="users"></i> <span
                 class="align-middle">Siswa</span>
         </a>
