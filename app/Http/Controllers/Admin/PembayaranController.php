@@ -73,7 +73,7 @@ class PembayaranController extends Controller
         $data['detail_biayas'] = DetailBiaya::where('jurusan_id', $id_siswa->jurusan_id)
             ->where('tahun_ajaran_id', $id_siswa->tahun_ajaran_id)
             ->get();
-        $data['riwayat_pembayarans'] = Pembayaran::where('siswa_id', $id)->get();
+        $data['riwayat_pembayarans'] = Pembayaran::where('siswa_id', $id)->orderBy('id','desc')->get();
         $udb = $data['detail_biayas']
             ->where('biaya_id', 1)
             ->pluck('jumlah_biaya')
