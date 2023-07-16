@@ -82,6 +82,9 @@ Route::middleware('revalidate')->group(function () {
                     });
 
                     Route::resource('pembayaran', PembayaranController::class)->only('index', 'show', 'store');
+                    Route::controller(PembayaranController::class)->group(function () {
+                        Route::get('/pembayaran/cetak/{id}', 'cetak')->name('pembayaran.cetak');
+                    });
                 });
                 Route::middleware('user')->group(function () {
                     Route::name('siswa.')->group(function () {

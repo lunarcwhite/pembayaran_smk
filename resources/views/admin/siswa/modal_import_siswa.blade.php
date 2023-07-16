@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="labelModal">
-                    Import Akun
+                    Import Siswa
                 </h4>
                 <button type="button" class="btn btn-outline-danger btn-close" data-dismiss="modal"
                     aria-label="Close"><span aria-hidden="true">&times;</span></button>

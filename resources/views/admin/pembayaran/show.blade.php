@@ -131,6 +131,7 @@
                 <th>Tanggal</th>
                 <th>Jumlah Pembayaran</th>
                 <th>Keterangan</th>
+                <th>Aksi</th>
             </thead>
             <tbody>
                 @forelse ($riwayat_pembayarans as $no => $riwayat_pembayaran)
@@ -141,6 +142,8 @@
                         <td>{{$riwayat_pembayaran->created_at->format('d-m-Y')}}</td>
                         <td>{{$riwayat_pembayaran->jumlah_bayar}}</td>
                         <td>{{$riwayat_pembayaran->keterangan}}</td>
+                        <td><a target="_blank" href="{{route('dashboard.pembayaran.cetak', $riwayat_pembayaran->id)}}"><i class="align-middle" data-feather="printer"></i> <span
+                            class="align-middle"></span></a></td>
                     </tr>
                 @empty
                     <h3>Belum Ada Data Pembayaran</h3>
