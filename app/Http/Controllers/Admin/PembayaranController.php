@@ -22,6 +22,12 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.index')->with($data);
     }
 
+    public function cetak($id)
+    {
+        $data['pembayaran'] = Pembayaran::where('id', $id)->first();
+        return view('admin.pembayaran.cetak_invoice')->with($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
