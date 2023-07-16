@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\JurusanController;
 use App\Http\Controllers\Siswa\InformasiPembayaranController;
 use App\Http\Controllers\Siswa\RiwayatPembayaranController;
 use App\Http\Controllers\Admin\KelolaSiswaController;
+use App\Http\Controllers\Admin\RekapPembayaranController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,10 @@ Route::middleware('revalidate')->group(function () {
                         Route::post('/biaya/tambah', 'tambah')->name('biaya.tambah');
                         Route::post('/biaya/tambah/{tahunAjaran}', 'tambahTahunAjaran')->name('biaya.tambah.tahunAjaran');
                         Route::post('/biaya/jurusan/tambah', 'jurusanTambah')->name('biaya.jurusan.tambah');
+                    });
+                    Route::controller(RekapPembayaranController::class)->group(function () {
+                        Route::get('/rekapan_pembayaran', 'index')->name('rekapan.pembayaran.index');
+                        Route::get('/rekapan_pembayaran/{id}', 'show')->name('rekapan.pembayaran.show');
                     });
 
                     Route::resource('pembayaran', PembayaranController::class)->only('index', 'show', 'store');
