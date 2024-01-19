@@ -1,7 +1,16 @@
 @extends('layouts.siswa.master')
-@section('pageTitle')
-    Profile
-@stop
+<!-- App Header -->
+    @section('pageTitle')
+        Profile
+    @stop
+    @section('back')
+        <div class="left">
+            <a href="javascript:;" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+    @endsection
+<!-- App Header -->
 @section('content')
     <div class="section mt-2">
         <div class="card mb-3">

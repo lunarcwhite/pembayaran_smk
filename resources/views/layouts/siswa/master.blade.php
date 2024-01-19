@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
     <link rel="stylesheet" href="{{ asset('siswa/assets/css/style.css') }}">
     <link rel="manifest" href="{{ asset('siswa/__manifest.json') }}">
+
     <style>
         .file {
             visibility: hidden;
@@ -37,13 +38,11 @@
     <!-- App Header -->
     <div class="appHeader bg-primary scrolled">
         <div class="left">
-            <a href="javascript:;" class="headerButton goBack">
-                <ion-icon name="chevron-back-outline"></ion-icon>
-            </a>
+            @yield('back')
         </div>
         <div class="pageTitle">@yield('pageTitle')</div>
         <div class="right">
-            @yield('headerComponent')
+            @yield('search')
         </div>
     </div>
     <!-- * App Header -->
