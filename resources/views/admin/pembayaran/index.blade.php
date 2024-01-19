@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Pembayaran')
 @section('menuTitle')
     Data Siswa
 @stop
@@ -28,9 +29,9 @@
                     <td>{{$siswa->jurusan->nama_jurusan}}</td>
                 </td>
                 <td class="py-3"><a href="{{route('dashboard.pembayaran.show',$siswa->id)}}" class="badge badge-info">Detail Pembayaran</a></td>
-            </tr> 
+            </tr>
             @empty
-            <h3>Belum Ada Data Siswa</h3>    
+            <h3>Belum Ada Data Siswa</h3>
             @endforelse
         </tbody>
     </table>

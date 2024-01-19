@@ -1,4 +1,5 @@
 @extends('layouts.siswa.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Profil')
 <!-- App Header -->
     @section('pageTitle')
         Profile

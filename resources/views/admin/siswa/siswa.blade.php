@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Siswa')
 @section('menuTitle')
     Data Siswa Tahun Ajaran {{$tahunAjaran->tahun_ajaran}} Jurusan {{$jurusan->nama_jurusan}}
 @stop

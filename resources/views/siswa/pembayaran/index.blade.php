@@ -1,4 +1,5 @@
 @extends('layouts.siswa.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Pembayaran')
 <!-- App Header -->
     @section('back')
         <a href="javascript:;" class="headerButton goBack">

@@ -29,7 +29,7 @@ class LoginController extends Controller
                 ->first();
             if ($user) {
                 // Attempt to log the user in
-                // $password = 'gbghfd65#2w45' . $request->password . 'sdghgh^$^';
+                $password = 'gbghfd65#2w45' . $request->password . 'sdghgh^$^';
                 if (Auth::attempt(['username' => $request->username, 'password' => $request->password]) || Auth::attempt(['email' => $request->username, 'password' => $password])) {
                     // Authentication passed...
                     $request->session()->regenerate();

@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Rekap Pembayaran')
 @section('menuTitle')
     Rekapan Pembayaran
 @stop
@@ -22,7 +23,7 @@
                             <tr>
                                 <td>{{ $no + 1 }}</td>
                                 <td>{{ $tahunAjaran->tahun_ajaran }}</td>
-                                <td><a href="{{route('dashboard.rekapan.pembayaran.show', $tahunAjaran->id)}}" class="btn btn-sm btn-info">Lihat</a> 
+                                <td><a href="{{route('dashboard.rekapan.pembayaran.show', $tahunAjaran->id)}}" class="btn btn-sm btn-info">Lihat</a>
                                 </td>
                             </tr>
                         @empty

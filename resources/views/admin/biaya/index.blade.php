@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Biaya')
 @section('menuTitle')
     Data Biaya
 @stop
@@ -26,9 +27,9 @@
                 </td>
                 <td class="py-3"><a href="{{route('dashboard.biaya.show',$biaya->id)}}" class="btn btn-sm btn-info">Detail Biaya</a>
                 </td>
-            </tr> 
+            </tr>
             @empty
-            <h3>Belum Ada Data Pembiayaan</h3>    
+            <h3>Belum Ada Data Pembiayaan</h3>
             @endforelse
         </tbody>
     </table>
