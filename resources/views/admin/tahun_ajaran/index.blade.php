@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Tahun Ajaran')
 @section('menuTitle')
     Tahun Ajaran
 @stop
@@ -25,13 +26,13 @@
                                 <td>{{ $no + 1 }}</td>
                                 <td>{{ $tahunAjaran->tahun_ajaran }}</td>
                                 <td>
-                                    
+
                                         <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#modalTahunAjaran"
                                             onclick="editTahunAjaran('{{ $tahunAjaran->id }}','formTahunAjaran')">
                                             Edit
                                         </button>
-                                        
+
                                 </td>
                             </tr>
                         @empty

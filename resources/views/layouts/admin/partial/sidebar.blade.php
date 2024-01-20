@@ -1,6 +1,6 @@
 <div class="sidebar-content js-simplebar">
     <a class="sidebar-brand" href="{{ route('dashboard.') }}">
-        <span class="align-middle">AdminKit</span>
+        <span class="align-middle">Kelola SPP SMKS BUNGA PERSADA CIANJUR</span>
     </a>
 
     <ul class="sidebar-nav">

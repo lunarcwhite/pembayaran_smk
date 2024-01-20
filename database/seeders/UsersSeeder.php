@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
                 'role_id' => 2
             ]
         ];
-        DB::table('users')->insert($data);
+        // DB::table('users')->insert($data);
 
     }
 }

@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Blank Page | AdminKit Demo</title>
+    <title>@yield('title') | Pembayaran SPP SMKS Bunga Persada</title>
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
 </head>
 

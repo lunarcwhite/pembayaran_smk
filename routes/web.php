@@ -18,24 +18,13 @@ use App\Http\Controllers\Admin\KelolaSiswaController;
 use App\Http\Controllers\Admin\RekapPembayaranController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::middleware('revalidate')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::controller(LoginController::class)->group(function () {
-            Route::get('/login', 'login')->name('login');
+            Route::get('/', 'login')->name('login');
             Route::post('/authenticate', 'authenticate')->name('authenticate');
         });
         Route::controller(RegisterController::class)->group(function () {

@@ -1,4 +1,5 @@
 @extends('layouts.admin.master')
+@section('title', isset($pageTitle) ? $pageTitle : 'Jurusan')
 @section('menuTitle')
     Data Jurusan
 @stop

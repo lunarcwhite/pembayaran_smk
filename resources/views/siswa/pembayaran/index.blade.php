@@ -1,7 +1,21 @@
 @extends('layouts.siswa.master')
-@section('pageTitle')
-    Informasi Pembayaran
-@stop
+@section('title', isset($pageTitle) ? $pageTitle : 'Pembayaran')
+<!-- App Header -->
+    @section('back')
+        <a href="javascript:;" class="headerButton goBack">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+    @endsection
+    @section('pageTitle')
+        Informasi Pembayaran
+    @stop
+    @section('search')
+        <a href="javascript:;" class="headerButton toggle-searchbox">
+            <ion-icon name="search-outline"></ion-icon>
+        </a>
+    @stop
+<!-- * App Header -->
+
 @section('content')
     <div class="section mt-2">
         <div class="card mb-3">
